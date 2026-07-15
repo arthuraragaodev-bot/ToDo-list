@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] argumentos) throws IOException {
         Scanner input = new Scanner(System.in);
         Dados dados = new Dados();
         List<Tarefa> tarefasCarregadas = dados.carregarTarefas();
