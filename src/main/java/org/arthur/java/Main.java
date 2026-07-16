@@ -1,17 +1,14 @@
 package org.arthur.java;
 
 import java.io.IOException;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
-        Dados dados = new Dados();
-        List<Tarefa> tarefasCarregadas = dados.carregarTarefas();
+        Dados<Tarefa> dados = new Dados<>();
+        List<Tarefa> tarefasCarregadas = dados.carregarObjetosJsonEmUmaLista(Tarefa.class);
 
 
         boolean loop = true;
@@ -25,12 +22,8 @@ public class Main {
                     System.out.print("Digite a tarefa: ");
 
                     String tarefaASerFeita = input.nextLine();
-                    try {
-                        Tarefa tarefa = new Tarefa(tarefaASerFeita);
-                        tarefasCarregadas.add(tarefa);
-                    } catch (DateTimeParseException e) {
-                        System.out.println("Horario Invalido!");
-                    }
+                    Tarefa tarefa = new Tarefa(tarefaASerFeita);
+                    tarefasCarregadas.add(tarefa);
                 }
 
                 case "2" -> {
@@ -67,7 +60,7 @@ public class Main {
                         }
                     }
                     case "5" -> {
-                        dados.salvarTarefas(tarefasCarregadas);
+                        dados.salvarObjetosEmJson(tarefasCarregadas);
                         loop = false;
                     }
             }

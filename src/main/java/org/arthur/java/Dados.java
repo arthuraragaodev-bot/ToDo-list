@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dados {
+public class Dados<T> {
     private Path arquivo = Paths.get("tarefas.json");
 
     public Dados() throws IOException {
@@ -19,20 +18,22 @@ public class Dados {
         }
     }
 
-    public void salvarTarefas(List<Tarefa> tarefas) throws IOException {
+    public void salvarObjetosEmJson(List<T> lista) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
         Files.delete(arquivo);
         Files.createFile(arquivo);
-        ObjectMapper objectMapper = new ObjectMapper();
-        for (Tarefa tarefa: tarefas) {
-            objectMapper.writeValue(arquivo.toFile(),tarefa);
+        for (T tipoGenerico: lista) {
+            objectMapper.writeValue(arquivo.toFile(),tipoGenerico);
         }
     }
 
-    public List<Tarefa> carregarTarefas() throws IOException {
+    public List<T> carregarObjetosJsonEmUmaLista(Class<T> classe) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Tarefa> tarefas = new ArrayList<>();
-        Tarefa tarefa = objectMapper.readValue(arquivo.toFile(),Tarefa.class);
-        tarefas.add(tarefa);
-        return tarefas;
+        List<String> linhas = Files.readAllLines(arquivo);
+        List<T> lista = new ArrayList<>();
+        for(String linha : linhas) {
+            lista.add(objectMapper.readValue(linha,classe));
+        }
+        return lista;
     }
 }
