@@ -9,8 +9,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Dados<Tarefa> dados = new Dados<>();
         List<Tarefa> tarefasCarregadas = dados.carregarObjetosJsonEmUmaLista(Tarefa.class);
-
-
         boolean loop = true;
         while (loop) {
             System.out.print("Menu Tarefas\n[1] criar tarefa\n[2] editar Tarefa\n[3] apagar Tarefa\n[4] mostrar tarefas\n[5] sair\n:");

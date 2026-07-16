@@ -8,4 +8,6 @@ do maven central usando gradle
 - Gradle
 - Records
 - Jackson
-- Switch expressions e escopo nos cases 
+- Switch expressions e escopo nos cases
+- Generics
+- 
