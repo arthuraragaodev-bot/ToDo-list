@@ -31,7 +31,7 @@ public class Main {
                         String oqueFazer = input.nextLine();
                         try {
                             tarefasCarregadas.remove(Integer.parseInt(id) - 1);
-                            tarefasCarregadas.add(new Tarefa(oqueFazer));
+                            tarefasCarregadas.add(Integer.parseInt(id) - 1,new Tarefa(oqueFazer));
                         } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
                             System.out.println("Id invalido");
                         } catch(NumberFormatException numberFormatException) {

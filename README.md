@@ -10,4 +10,4 @@ do maven central usando gradle
 - Jackson
 - Switch expressions e escopo nos cases
 - Generics
-- 
+- POO

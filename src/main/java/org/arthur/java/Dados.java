@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Dados<T> {
@@ -18,7 +19,7 @@ public class Dados<T> {
         }
     }
 
-    public void salvarObjetosEmJson(List<T> lista) throws IOException {
+    public void salvarObjetosEmJson(List<T> lista) throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         Files.delete(arquivo);
         Files.createFile(arquivo);
@@ -30,7 +31,7 @@ public class Dados<T> {
     public List<T> carregarObjetosJsonEmUmaLista(Class<T> classe) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> linhas = Files.readAllLines(arquivo);
-        List<T> lista = new ArrayList<>();
+        List<T> lista = new LinkedList<>();
         for(String linha : linhas) {
             lista.add(objectMapper.readValue(linha,classe));
         }
