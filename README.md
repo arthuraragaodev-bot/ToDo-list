@@ -1,3 +1,3 @@
 # ToDo-list 
 
-Fiz esse gerenciador de tarefas simples[src](src)
+Fiz esse gerenciador de tarefas simples

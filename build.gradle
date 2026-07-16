@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.4'
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
